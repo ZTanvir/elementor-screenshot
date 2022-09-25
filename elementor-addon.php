@@ -8,6 +8,26 @@
  * Text Domain: elementor-addon
  */
 
+
+add_action('wp_enqueue_scripts', 'load_asset');
+// Add JS function
+function load_asset(){
+    wp_enqueue_script(
+        'ss script',
+        plugin_dir_url( __FILE__ ) . './js/script.js',
+        array(),
+        1,
+        'all'
+    );
+    wp_enqueue_style(
+        'ss script',
+        plugin_dir_url( __FILE__ ) . './css/style.css',
+        array(),
+        1,
+        'all'
+    );
+}
+ 
 function register_hello_world_widget( $widgets_manager ) {
 
 	 
