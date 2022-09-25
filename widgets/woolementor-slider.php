@@ -25,8 +25,9 @@ class Elementor_Hello_World_Widget_2 extends \Elementor\Widget_Base {
 	protected function render() {
 
 		$settings = $this->get_settings_for_display();
+
 		/*Get data from api */ 
-		// @author zahirul
+		// @author zahirul Islam
 		$all_src = [];
 		$url = 'https://api.wordpress.org/plugins/info/1.0/woolementor.json';
 		$request = wp_remote_get( $url );
@@ -35,12 +36,12 @@ class Elementor_Hello_World_Widget_2 extends \Elementor\Widget_Base {
 			} 
 		$body = wp_remote_retrieve_body( $request );
 		$data = json_decode( $body ,true);
-			// echo var_dump($data['screenshots'][1]["src"]);
 		for( $i=1; $i < 6; $i++) { // Condition was wrong
-			// then store/append x as elements of the char array, A.... what is the syntax?
 			$all_src[$i] = $data['screenshots'][$i]["src"];
-			}
+		}
 			//echo var_dump($all_src);
+			
+			// Show screenshot to page
 			foreach ($all_src as $img) {
 				echo '<div>';
 				echo '<img src="'. $img .'" />';
